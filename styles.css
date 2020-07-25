@@ -1,0 +1,173 @@
+@font-face {
+  font-family: "Nexa-Regular";
+  font-display: "swap";
+  src: url("https://d167y3o4ydtmfg.cloudfront.net/kraftrecipes/v202003230148/fonts/Nexa-Regular.eot");
+  src: local("Nexa"), local("Nexa-Regular"), local("sans-serif"),
+    url("https://d167y3o4ydtmfg.cloudfront.net/kraftrecipes/v202003230148/fonts/Nexa-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://d167y3o4ydtmfg.cloudfront.net/kraftrecipes/v202003230148/fonts/Nexa-Regular.woff")
+      format("woff"),
+    url("https://d167y3o4ydtmfg.cloudfront.net/kraftrecipes/v202003230148/fonts/Nexa-Regular.ttf")
+      format("truetype"),
+    url("https://d167y3o4ydtmfg.cloudfront.net/kraftrecipes/v202003230148/fonts/Nexa-Regular.svg#Nexa-Regular")
+      format("svg"),
+    url("https://d167y3o4ydtmfg.cloudfront.net/kraftrecipes/v202003230148/fonts/Nexa-Regular.woff2")
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+body {
+  margin: 0;
+}
+
+textarea:focus,
+input:focus,
+button:focus {
+  outline: none;
+}
+
+.zt-assignment {
+  max-width: 1000px;
+  margin: 100px auto 30px;
+  padding: 0 10px;
+}
+.zt-input-element {
+  font-family: "Nexa-Regular";
+  border: 1px solid #dadada;
+  padding: 15px 20px;
+  border-bottom-left-radius: 8px;
+  width: 55%;
+  border-top-left-radius: 8px;
+  font-size: 16px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.zt-input-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+.zt-search-icon {
+  background: #5dbeb8;
+  border: navajowhite;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  position: relative;
+  left: -20px;
+  cursor: pointer;
+}
+.search-icon {
+  fill: white;
+}
+
+.zt-images-container {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  grid-gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.zt-image-item-wrapper {
+  position: relative;
+}
+
+.zt-user-block {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.sz-image-element {
+  width: 28vw;
+  max-width: 320px;
+  min-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sz-user-name-element {
+  margin-left: 15px;
+  color: white;
+  font-family: "Nexa-Regular";
+  font-size: 14px;
+}
+
+.sz-user-name-element > span {
+  color: #5dbeb8;
+}
+
+.sz-user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.zt-load-more-button {
+  letter-spacing: 1px;
+  border-radius: 30px;
+  margin: 50px auto 30px;
+  border: none;
+  padding: 15px 40px;
+  background: #5dbeb8;
+  font-size: 17px;
+  font-family: nexa-regular;
+  color: white;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+}
+
+.zt-popup-wrapper {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.zt-popup-block {
+  position: relative;
+}
+.zt-close-icon {
+  position: absolute;
+  right: -60px;
+  top: 0;
+  cursor: pointer;
+}
+.zt-full-image {
+  max-width: 1080px;
+  max-height: 90vh;
+}
+
+.zt-download-icon {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  color: white;
+  background: #5dbeb8;
+  cursor: pointer;
+  width: 135px;
+  margin: 15px auto 0;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-family: nexa-regular;
+}
