@@ -1,6 +1,7 @@
 import * as React from "react"
+import Link from "next/link"
 import fetch from "isomorphic-unfetch"
-import { searchIcon, closeIcon } from "../assets/icons"
+import { searchIcon } from "../assets/icons"
 
 const makeAPi = async (pagination = 1, searchTerm = "") => {
   const response = await fetch(
@@ -9,45 +10,11 @@ const makeAPi = async (pagination = 1, searchTerm = "") => {
   return await response.json()
 }
 
-function ImageViewer(props) {
-  const {
-    data: { alt_description = "", urls: { regular = "" } = {} } = {},
-    setImageIndex = () => {},
-  } = props
-
-  const onCloseIcon = () => {
-    setImageIndex("")
-  }
-
-  React.useEffect(() => {
-    document.body.classList.add("no-scroll")
-
-    return () => {
-      document.body.classList.remove("no-scroll")
-    }
-  }, [])
-
-  return (
-    <div className="zt-popup-wrapper">
-      <div className="zt-popup-block">
-        <img className="zt-full-image" src={regular} alt={alt_description} />
-        <div onClick={onCloseIcon} className="zt-close-icon">
-          {closeIcon()}
-        </div>
-        <a href={regular} className="zt-download-icon" download>
-          Download Image
-        </a>
-      </div>
-    </div>
-  )
-}
-
 function Index() {
   const [inputValue, setInputValue] = React.useState("")
   const [mount, setMount] = React.useState(false)
   const [pagination, setPagination] = React.useState(1)
   const [dataResponse, setDataResponse] = React.useState({})
-  const [imageIndex, setImageIndex] = React.useState("")
 
   const inputRef = React.useRef(null)
 
@@ -62,12 +29,6 @@ function Index() {
 
   const onLoadMore = React.useCallback(() => {
     setPagination((prevState) => prevState + 1)
-  }, [])
-
-  const onImageClick = React.useCallback((event) => {
-    const index =
-      event.currentTarget && event.currentTarget.getAttribute("index")
-    setImageIndex(index)
   }, [])
 
   React.useEffect(() => {
@@ -88,6 +49,7 @@ function Index() {
 
   const renderImage = (item, index) => {
     const {
+      id = "",
       alt_description = "",
       urls: { small: image = "" } = {},
       user: { name = "", profile_image: { medium: profilePic = "" } = {} },
@@ -95,20 +57,27 @@ function Index() {
 
     return (
       <li
-        onClick={onImageClick}
         index={index}
         key={`image-item-${index}`}
         className="zt-image-item-wrapper"
       >
-        <div className="zt-image-block">
-          <img src={image} alt={alt_description} className="sz-image-element" />
-        </div>
-        <div className="zt-user-block">
-          <img src={profilePic} alt={name} className="sz-user-image" />
-          <div className="sz-user-name-element">
-            Image by <span> {name}</span>
-          </div>
-        </div>
+        <Link href="/photo/[id]" as={`/photo/${id}`}>
+          <a>
+            <div className="zt-image-block">
+              <img
+                src={image}
+                alt={alt_description}
+                className="sz-image-element"
+              />
+            </div>
+            <div className="zt-user-block">
+              <img src={profilePic} alt={name} className="sz-user-image" />
+              <div className="sz-user-name-element">
+                Image by <span> {name}</span>
+              </div>
+            </div>
+          </a>
+        </Link>
       </li>
     )
   }
@@ -140,13 +109,6 @@ function Index() {
             </button>
           )}
         </div>
-      )}
-
-      {imageIndex !== "" && (
-        <ImageViewer
-          data={dataResponse.results[imageIndex]}
-          setImageIndex={setImageIndex}
-        />
       )}
     </div>
   )
